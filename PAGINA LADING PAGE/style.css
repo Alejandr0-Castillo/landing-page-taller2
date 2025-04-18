@@ -1,0 +1,347 @@
+/* Estilos Generales */
+:root {
+    /* Tema Claro (Predeterminado) */
+    --color-fondo: #ffebee; /* Rojito suave */
+    --color-texto: #333;
+    --color-header-fondo: #f8bbd0; /* Rosado suave */
+    --color-header-texto: #333;
+    --color-header-borde: #f48fb1; /* Rosado más oscuro */
+    --color-formulario-fondo: #ffccbc; /* Naranja suave */
+    --color-formulario-texto: #333;
+    --color-input-fondo: #fff;
+    --color-input-borde: #ccc;
+    --color-input-texto: #333;
+    --color-boton-fondo: #e57373; /* Rojo claro para botón */
+    --color-boton-texto: #fff;
+    --color-boton-hover: #ef5350; /* Rojo más oscuro hover */
+    --color-enlace-hover: #ad1457; /* Rosado oscuro para hover enlace */
+    --color-error: #d9534f;
+    --color-exito-fondo: #dff0d8;
+    --color-exito-texto: #5cb85c;
+    --color-exito-borde: #d6e9c6;
+    --color-footer-fondo: #333;
+    --color-footer-texto: #333; /* Negro en tema claro */
+    --color-presentacion-fondo: #fff;
+    --color-seccion-formulario-fondo: #ffcc80; /* Naranja más claro para fondo sección */
+    --color-input-focus-borde: #ad1457; /* Rosado oscuro */
+    --color-input-focus-shadow: rgba(244, 143, 177, 0.5); /* Rosado suave */
+}
+
+body.dark-theme {
+    /* Tema Oscuro */
+    --color-fondo: #424242; /* Azul más claro (gris oscuro) */
+    --color-texto: #e0e0e0;
+    --color-header-fondo: #1a237e; /* Azul oscuro */
+    --color-header-texto: #e0e0e0;
+    --color-header-borde: #303f9f; /* Azul intermedio */
+    --color-formulario-fondo: #283593; /* Azul oscuro */
+    --color-formulario-texto: #e0e0e0;
+    --color-input-fondo: #616161;
+    --color-input-borde: #9e9e9e;
+    --color-input-texto: #e0e0e0;
+    --color-boton-fondo: #5c6bc0; /* Azul índigo */
+    --color-boton-texto: #fff;
+    --color-boton-hover: #3f51b5; /* Azul índigo más oscuro */
+    --color-enlace-hover: #9fa8da; /* Azul claro para hover enlace */
+    --color-error: #ef9a9a; /* Rojo claro */
+    --color-exito-fondo: #1b5e20; /* Verde oscuro */
+    --color-exito-texto: #a5d6a7; /* Verde claro */
+    --color-exito-borde: #2e7d32;
+    --color-footer-fondo: #212121; /* Casi negro */
+    --color-footer-texto: #e0e0e0; /* Blanco en tema oscuro */
+    --color-presentacion-fondo: #303030; /* Gris oscuro */
+    --color-seccion-formulario-fondo: #3949ab; /* Azul índigo oscuro */
+    --color-input-focus-borde: #9fa8da; /* Azul claro */
+    --color-input-focus-shadow: rgba(159, 168, 218, 0.5); /* Azul claro */
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding-top: 90px; /* Mantener espacio para header fijo */
+    box-sizing: border-box;
+    line-height: 1.6;
+    background-color: var(--color-fondo); /* Usar variable */
+    color: var(--color-texto); /* Usar variable */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+}
+
+.contenedor {
+    width: 70%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Encabezado */
+header {
+    background: var(--color-header-fondo); /* Usar variable */
+    color: var(--color-header-texto); /* Usar variable */
+    padding-top: 20px;
+    min-height: 70px;
+    border-bottom: var(--color-header-borde) 3px solid; /* Usar variable */
+    /* Estilos para header fijo */
+    position: fixed;
+    top: 0;
+    left: 0; /* Asegura que empiece desde la izquierda */
+    width: 100%;
+    z-index: 1000; /* Asegura que esté por encima de otro contenido */
+    box-sizing: border-box; /* Incluye padding y border en el width/height total */
+}
+
+header .contenedor {
+    display: flex;
+    justify-content: space-between; /* Logo a la izq, .header-derecha a la der */
+    align-items: center; /* Centra verticalmente los items */
+    /* position: absolute; <- Eliminado */
+    height: 100%; /* Asegura que ocupe la altura del header */
+    /* Usamos el width del .contenedor general para limitar el ancho */
+    width: 80%; /* O el % que definimos para .contenedor */
+    margin: auto; /* Centra el contenedor del header */
+    padding: 0; /* Quitamos padding extra si .contenedor ya tiene margen */
+}
+
+/* Estilos para el agrupador derecho */
+.header-derecha {
+    display: flex;
+    align-items: center; /* Alinea nav y botón verticalmente */
+}
+
+/* Ajuste para la nav dentro del agrupador */
+.header-derecha nav {
+    margin-right: 20px; /* Espacio entre nav y botón */
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+header nav ul li {
+    margin-left: 20px;
+}
+
+/* Aseguramos que la imagen del logo se alinee bien */
+#logo-img {
+    display: block; /* Evita espacio extra debajo */
+    max-height: 50px; /* Limita altura si es necesario, ajusta padding-top del body */
+    width: auto; /* Mantiene proporción */
+}
+
+header nav ul li a {
+    color: var(--color-header-texto); /* Usar variable */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+header nav ul li a:hover {
+    color: var(--color-enlace-hover); /* Usar variable */
+}
+
+/* Botón de cambio de tema */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--color-header-texto); /* Borde sutil */
+    color: var(--color-header-texto);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em; /* Tamaño del icono/emoji */
+    margin-left: 20px; /* Espacio respecto a la navegación */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Ligero fondo al pasar el mouse */
+    border-color: var(--color-enlace-hover);
+    color: var(--color-enlace-hover);
+}
+
+
+/* Sección Presentación */
+.presentacion {
+    padding: 40px 0;
+    text-align: center;
+    background: var(--color-presentacion-fondo); /* Usar variable */
+    transition: background-color 0.3s; /* Transición */
+}
+
+.presentacion h1 {
+    margin-bottom: 10px;
+    color: var(--color-texto); /* Usar variable */
+    margin-top: 50px; /* Añadido para bajar el título */
+}
+
+.presentacion p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.presentacion img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* Sección Formulario */
+.seccion-formulario {
+    padding: 40px 0;
+    background: var(--color-seccion-formulario-fondo); /* Usar variable */
+    transition: background-color 0.3s; /* Transición */
+}
+
+.seccion-formulario h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-texto); /* Usar variable */
+}
+
+#miFormulario {
+    background: var(--color-formulario-fondo); /* Usar variable */
+    color: var(--color-formulario-texto); /* Heredar color de texto */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s; /* Transición */
+    max-width: 600px; /* Ancho máximo para el formulario */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+}
+
+.campo-formulario {
+    margin-bottom: 20px;
+}
+
+.campo-formulario label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-formulario-texto); /* Usar variable */
+}
+
+.campo-formulario input[type="text"],
+.campo-formulario input[type="email"],
+.campo-formulario select,
+.campo-formulario textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-input-borde); /* Usar variable */
+    background-color: var(--color-input-fondo); /* Usar variable */
+    color: var(--color-input-texto); /* Usar variable */
+    border-radius: 4px;
+    box-sizing: border-box; /* Asegura que padding no aumente el ancho total */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transición */
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+    border-color: var(--color-input-focus-borde); /* Usar variable */
+    outline: none;
+    box-shadow: 0 0 5px var(--color-input-focus-shadow); /* Usar variable */
+}
+
+.campo-formulario textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-boton-fondo); /* Usar variable */
+    color: var(--color-boton-texto); /* Usar variable */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--color-boton-hover); /* Usar variable */
+}
+
+button[type="submit"]:active {
+    background-color: #033a7a;
+}
+
+/* Mensajes de Error y Éxito */
+.mensaje-error {
+    color: var(--color-error); /* Usar variable */
+    font-size: 0.9em;
+    display: block; /* Asegura que ocupe su propia línea */
+    min-height: 1em; /* Evita saltos de layout */
+    margin-top: 3px;
+}
+
+.mensaje-exito {
+    color: var(--color-exito-texto); /* Usar variable */
+    background-color: var(--color-exito-fondo); /* Usar variable */
+    border: 1px solid var(--color-exito-borde); /* Usar variable */
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* Estilos para el botón "Enviar Otro Formulario" */
+#enviar-otro-formulario {
+    background-color: var(--color-boton-fondo);
+    color: var(--color-boton-texto);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    padding: 8px 12px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#enviar-otro-formulario:hover {
+    background-color: var(--color-boton-hover);
+}
+
+
+/* Pie de Página */
+footer {
+    background: var(--color-header-fondo); /* Usar variable */
+    color: var(--color-footer-texto); /* Usar variable */
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* Diseño Adaptable */
+@media screen and (max-width: 768px) {
+    .contenedor {
+        width: 90%;
+    }
+
+    header .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        margin-top: 10px;
+        justify-content: center;
+    }
+
+    header nav ul li {
+        margin: 0 10px;
+    }
+
+    .presentacion img {
+        width: 90%;
+    }
+
+    #miFormulario {
+        padding: 20px;
+    }
+}
